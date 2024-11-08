@@ -31,8 +31,9 @@ export const register = async (req, res) => {
 
             // ? STEP (5) if user save or registerd 
             return res.json({
+                success:true,
                 message: "User Add Successfully",
-                data: newUser
+                // data: newUser
             })
 
         };

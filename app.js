@@ -4,6 +4,7 @@ import connectDB from "./config/db.js";
 import router from "./routes/auth.route.js";
 import Userrouter from "./routes/user.routes.js";
 import cors from 'cors'
+import jobRouter from "./routes/job.routes.js";
 
 
 configDotenv()
@@ -25,6 +26,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/users',router);
 app.use('/api/users',Userrouter);
+app.use('/api/jobs/',jobRouter);
 
 const PORT = process.env.PORT || 7002;
 app.listen(PORT, (req, res) => {
