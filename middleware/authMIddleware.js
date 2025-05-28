@@ -15,10 +15,7 @@ const authVerification = (req,res,next) =>{
 
         const decode = jwt.verify(token,process.env.SECRET_KEY);
         req.user = decode;
-    //    return res.status(200).json({
-    //         message:"Authorize person",
-    //         user
-    //     });
+   
 
         next();
     } catch (error) {

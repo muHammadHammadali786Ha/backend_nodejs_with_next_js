@@ -9,7 +9,7 @@ export const register = async (req, res) => {
     try {
 
         // ! STEP (1)  getting data from the request
-        const { username, email, password } = req.body;
+        const { username, email, password , role } = req.body;
 
         // ! STEP (2) checking user already exit with this email 
         const user = await User.findOne({ email: email });
@@ -24,7 +24,8 @@ export const register = async (req, res) => {
             const newUser = await new User({
                 username,
                 email,
-                password: hashPassword
+                password: hashPassword,
+                role
             })
 
             newUser.save();
@@ -33,13 +34,13 @@ export const register = async (req, res) => {
             return res.json({
                 success:true,
                 message: "User Add Successfully",
-                // data: newUser
             })
 
         };
 
         // ! if user already EXit 
         return res.json({
+            success:false,
             message: "User Already Exit",
             data: req.body
         })
